@@ -1,0 +1,120 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Feedback</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* CSS for star ratings */
+        .star-rating {
+            display: inline-block;
+        }
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+        .star-rating label {
+            font-size: 25px;
+            color: #ccc;
+            cursor: pointer;
+            display: inline; /* Display stars inline */
+            margin-right: 10px; /* Adjust spacing between stars */
+        }
+        .star-rating label:before {
+            content: '★';
+        }
+        .star-rating input[type="radio"]:checked ~ label {
+            color: #ffdd00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Students Feedback</h1>
+    </header>
+    <main>
+        <section class="feedback-form">
+            <h2>Give Feedback</h2>
+            <form id="feedbackForm" action="#" method="POST">
+                <label for="teacher">Teacher's Name:</label>
+                <input type="text" id="teacher" name="teacher" required>
+                
+                <label for="course">Course Taught:</label>
+                <input type="text" id="course" name="course" required>
+
+                <label>Rate the following aspects:</label>
+
+                <div class="rating-container">
+                    <label for="punctuality">Punctuality:</label>
+                    <div class="star-rating">
+                        <input type="radio" id="punctuality1" name="punctuality" value="1">
+                        <label for="punctuality1"></label>
+                        <input type="radio" id="punctuality2" name="punctuality" value="2">
+                        <label for="punctuality2"></label>
+                        <input type="radio" id="punctuality3" name="punctuality" value="3">
+                        <label for="punctuality3"></label>
+                        <input type="radio" id="punctuality4" name="punctuality" value="4">
+                        <label for="punctuality4"></label>
+                        <input type="radio" id="punctuality5" name="punctuality" value="5" required>
+                        <label for="punctuality5"></label>
+                    </div>
+                </div>
+
+                <div class="rating-container">
+                    <label for="behavior">Behavior:</label>
+                    <div class="star-rating">
+                        <input type="radio" id="behavior1" name="behavior" value="1" required>
+                        <label for="behavior1"></label>
+                        <input type="radio" id="behavior2" name="behavior" value="2">
+                        <label for="behavior2"></label>
+                        <input type="radio" id="behavior3" name="behavior" value="3">
+                        <label for="behavior3"></label>
+                        <input type="radio" id="behavior4" name="behavior" value="4">
+                        <label for="behavior4"></label>
+                        <input type="radio" id="behavior5" name="behavior" value="5">
+                        <label for="behavior5"></label>
+                    </div>
+                </div>
+
+                <!-- Add more rating containers for other aspects -->
+                <!-- Be sure to update the JavaScript to handle these additional ratings -->
+
+                <label for="comments">Additional Comments:</label>
+                <textarea id="comments" name="comments" rows="4"></textarea>
+                
+                <button type="submit">Submit Feedback</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Teacher Feedback Platform</p>
+    </footer>
+    <script>
+        // JavaScript to handle form submission
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Retrieve form data
+            const teacher = document.getElementById('teacher').value;
+            const course = document.getElementById('course').value;
+            const punctuality = document.querySelector('input[name="punctuality"]:checked').value;
+            const behavior = document.querySelector('input[name="behavior"]:checked').value;
+            // Retrieve ratings for other aspects similarly
+
+            const comments = document.getElementById('comments').value;
+
+            // Do something with the form data (e.g., submit via AJAX, store in database)
+            console.log("Teacher:", teacher);
+            console.log("Course:", course);
+            console.log("Punctuality:", punctuality);
+            console.log("Behavior:", behavior);
+            // Log ratings for other aspects similarly
+
+            console.log("Comments:", comments);
+
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
